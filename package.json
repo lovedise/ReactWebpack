@@ -1,15 +1,20 @@
 {
-  "name": "es5_sample",
+  "name": "react_sample",
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "if-env NODE_ENV=production && npm run prod || npm run dev",
+    "dev": "webpack-dev-server --inline --content-base public/ --history-api-fallback",
+    "prod": "webpack && node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.6.1",
+    "express": "^4.13.4",
+    "if-env": "^1.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   },

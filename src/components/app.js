@@ -6,7 +6,7 @@ import React from 'react';
 export default class App extends React.Component{
   render() {
     return (
-      <div>hello react</div>
+      <div>hello react12</div>
     )
   }
 }

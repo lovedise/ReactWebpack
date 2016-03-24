@@ -4,8 +4,8 @@ var path = require('path');
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    'webpack-dev-server/client?http://127.0.0.1:8080/',
-    'webpack/hot/only-dev-server',
+    // 'webpack-dev-server/client?http://127.0.0.1:8080/',
+    // 'webpack/hot/only-dev-server',
     './src'
   ],
   output: {
@@ -25,8 +25,12 @@ module.exports = {
       }
     ]
   },
-  plugins: [
+  plugins: process.env.NODE_ENV === 'production' ? [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ] : [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]
+  ],
 };
